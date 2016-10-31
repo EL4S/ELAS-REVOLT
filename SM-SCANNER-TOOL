@@ -124,7 +124,7 @@ read path
 cd $path
 sudo perl uniscan.pl -u $siteee -bqweds > $scanout/$site/uniscan-scan.txt
 printf "wait to see magic"
-sl
+echo ""
 sudo wapiti $siteee  > $scanout/$site/wapiti_scan.txt
 echo "do you want to run wpscan attack or sqlmap ?"
 read -p "Run command $foo? [sqlmap or wpscan]" what
