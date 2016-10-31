@@ -44,7 +44,7 @@ sudo apt-get install lynx
 echo ""
 echo ""
 echo "" 
-printf "use proxychains for more security, please read about it and modify here gedit /etc/proxychains.conf last lines proxychains <tool>"
+printf "use proxychains for more security"
 echo ""
 echo ""
 echo "give me the folder where you want to store scan output" 
@@ -229,6 +229,3 @@ fi
 fi
 fi 
 fi
-
-
-
