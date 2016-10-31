@@ -108,7 +108,7 @@ printf "Patience is not simply the ability to wait - it's how we behave while we
 Joyce Meyer"
 cd $scanout
 mkdir $site
-nmap -sC -p22,11,139,445,21 -T4 $ip > $scanout/$site/Port_scan.txt
+nmap -sC -p22,110,111,139,445,21,8000 -T4 $ip > $scanout/$site/Port_scan.txt
 nmap -sP -Pn --script discovery $ip  > $scanout/$site/Infosh.txt
 nmap -sS -A $ip  > $scanout/$site/infosh2.txt
 echo "" 
@@ -181,7 +181,7 @@ printf "Patience is not simply the ability to wait - it's how we behave while we
 Joyce Meyer"
 cd $scanout
 mkdir $site
-nmap -sC -p22,11,139,445,21 -T4 $ip > $scanout/$site/Port_scan.txt
+nmap -sC -p22,110,111,139,445,21,8000 -T4 $ip > $scanout/$site/Port_scan.txt
 nmap -sP -Pn --script discovery $ip  > $scanout/$site/Infosh.txt
 nmap -sS -A $ip  > $scanout/$site/infosh2.txt
 echo ""
