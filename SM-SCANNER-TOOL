@@ -196,7 +196,7 @@ read path
 cd $path
 sudo perl uniscan.pl -u $siteee -q  > $scanout/$site/uniscan-scan.txt
 printf "wait to see magic"
-sudo wapiti $siteee -u -n 5 -b domain -m "-all,sql,blindsql,xss" -v 2 > scanout/$site/wpiti_scan.txt
+sudo wapiti $siteee -u -n 5 -b domain -m "-all,sql,blindsql,xss" -v 2 > $scanout/$site/wpiti_scan.txt
 echo "do you want to run wpscan attack or sqlmap ?"
 read -p "Run command $foo? [sqlmap or wpscan]" what
 if [[ $what = wpscan ]] ; then
