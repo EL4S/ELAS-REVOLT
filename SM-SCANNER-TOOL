@@ -115,7 +115,7 @@ echo ""
 echo ""
 echo "Give Me The Website without www"
 read www
-theharvester -d $www -l 1000 -b all > $scanout/$site/theharvester.txt
+theharvester -d $www -l 500 -b all > $scanout/$site/theharvester.txt
 echo ""
 echo "give me the website with this form http://site.com/"
 read siteee
@@ -125,7 +125,7 @@ cd $path
 sudo perl uniscan.pl -u $siteee -q  > $scanout/$site/uniscan-scan.txt
 printf "wait to see magic"
 sl
-sudo wapiti $siteee -u -n 5 -b domain -m "-all,sql,blindsql" -v 2 
+sudo wapiti $siteee -u -n 5 -b domain -m "-all,sql,blindsql,xss" -v 2 > $scanout/$site/wapiti_scan.txt
 echo "do you want to run wpscan attack or sqlmap ?"
 read -p "Run command $foo? [sqlmap or wpscan]" what
 if [[ $what = wpscan ]] ; then
@@ -187,7 +187,7 @@ nmap -sS -A $ip  > $scanout/$site/infosh2.txt
 echo ""
 echo "Give Me The Website without www"
 read www
-theharvester -d $www -l 1000 -b all > $scanout/$site/theharvester.txt
+theharvester -d $www -l 500 -b all > $scanout/$site/theharvester.txt
 echo ""
 echo "give me the website with this form http://site.com/"
 read siteee
@@ -196,7 +196,7 @@ read path
 cd $path
 sudo perl uniscan.pl -u $siteee -q  > $scanout/$site/uniscan-scan.txt
 printf "wait to see magic"
-sudo wapiti $siteee -u -n 5 -b domain -m "-all,sql,blindsql" -v 2 
+sudo wapiti $siteee -u -n 5 -b domain -m "-all,sql,blindsql,xss" -v 2 > scanout/$site/wpiti_scan.txt
 echo "do you want to run wpscan attack or sqlmap ?"
 read -p "Run command $foo? [sqlmap or wpscan]" what
 if [[ $what = wpscan ]] ; then
